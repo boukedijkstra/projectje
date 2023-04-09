@@ -1,5 +1,6 @@
 <template>
   <div>
+    <NuxtLoadingIndicator />
     <Test />
   </div>
 </template>
@@ -13,5 +14,8 @@
 }
 p {
     margin-bottom: 10px;
+}
+body {
+  padding: 10px 0;
 }
 </style>
