@@ -14,6 +14,18 @@
             <h2>Watertemperatuur Terherne</h2>
             <h2>{{ wetterskip }}°C</h2>
         </div>
+        <div class="blok">
+            <div class="sun">
+                <div class="sun-child">
+                    <div><img src="~/assets/sunrise.png" height="32"></div>
+                    <span>{{ sunrise }}</span>
+                </div>
+                <div class="sun-child">
+                    <div><img src="~/assets/sunset.png" height="38"></div>
+                    <span>{{ sunset }}</span>
+                </div>
+            </div>
+        </div>
         <div class="blok knmi-text">
             <div v-html="knmi" />
         </div>
@@ -22,6 +34,7 @@
 
 <script setup lang="ts">
 const knmi = await $fetch('/api/knmi');
+const {sunset, sunrise } = await $fetch('/api/sunrise');
 const wetterskip = await $fetch('/api/wetterskip');
 
 onMounted(() => {
@@ -58,6 +71,18 @@ onMounted(() => {
     img {
         width: 100%;
         border-radius: 10px;
+    }
+}
+
+.sun {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    &-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
