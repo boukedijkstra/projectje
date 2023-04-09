@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <div class="blok">
-            <img src="https://cdn.knmi.nl/knmi/map/general/weather-map.gif" class="sneekermeer" />
+        <div class="blok knmi">
+            <img src="https://cdn.knmi.nl/knmi/map/general/weather-map.gif" />
         </div>
-        <div class="blok">
-            <img src="https://www.windfinder.com/wind-cgi/stationsgif.pl?STATIONSNR=nl451&UNIT_WIND=kts&UNIT_TEMPERATURE=c" class="sneekermeer" border="0" />
+        <div class="blok sneekermeer">
+            <img src="https://www.windfinder.com/wind-cgi/stationsgif.pl?STATIONSNR=nl451&UNIT_WIND=kts&UNIT_TEMPERATURE=c" border="0" />
         </div>
         <div class="blok" id="windfinder"></div>
         <div class="blok">
@@ -14,7 +14,7 @@
             <h2>Watertemperatuur Terherne</h2>
             <h2>{{ wetterskip }}°C</h2>
         </div>
-        <div class="blok knmi">
+        <div class="blok knmi-text">
             <div v-html="knmi" />
         </div>
     </div>
@@ -45,21 +45,32 @@ onMounted(() => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: black 1px solid;
+    // border: black 1px solid;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 #windfinder {
     height: 400px;
 }
 .knmi {
-    padding: 10px 5px;
+    padding: unset;
+    img {
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+.knmi-text {
+    padding: 10px 10px;
+}
+.sneekermeer {
+    img {
+        width: 100%;
+    }
 }
 .buienradar {
     display: flex;
     justify-content: center;
-}
-.sneekermeer {
-    width: 100%;
 }
 </style>
